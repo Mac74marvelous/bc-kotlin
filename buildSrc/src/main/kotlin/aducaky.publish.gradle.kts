@@ -25,9 +25,9 @@ configure<PublishingExtension> {
                 }
 
                 scm {
-                    connection.set("scm:git:git://github.com/stainless-sdks/aducaky-java.git")
-                    developerConnection.set("scm:git:git://github.com/stainless-sdks/aducaky-java.git")
-                    url.set("https://github.com/stainless-sdks/aducaky-java")
+                    connection.set("scm:git:git://github.com/Mac74marvelous/bc-kotlin.git")
+                    developerConnection.set("scm:git:git://github.com/Mac74marvelous/bc-kotlin.git")
+                    url.set("https://github.com/Mac74marvelous/bc-kotlin")
                 }
 
                 versionMapping {
