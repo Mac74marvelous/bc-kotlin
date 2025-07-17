@@ -17,5 +17,12 @@ tasks.withType<JavaCompile>().configureEach {
 }
 
 application {
-    mainClass = "com.aducaky.api.example.Main"
+    // Use `./gradlew :aducaky-java-example:run` to run `Main`
+    // Use `./gradlew :aducaky-java-example:run -Dexample=Something` to run `SomethingExample`
+    mainClass = "com.aducaky.api.example.${
+        if (project.hasProperty("example"))
+            "${project.property("example")}Example"
+        else
+            "Main"
+    }"
 }
