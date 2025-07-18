@@ -3,14 +3,13 @@
 package com.aducaky.api.services.async
 
 import com.aducaky.api.core.ClientOptions
-import com.aducaky.api.core.JsonValue
 import com.aducaky.api.core.RequestOptions
 import com.aducaky.api.core.checkRequired
 import com.aducaky.api.core.handlers.emptyHandler
+import com.aducaky.api.core.handlers.errorBodyHandler
 import com.aducaky.api.core.handlers.errorHandler
 import com.aducaky.api.core.handlers.jsonHandler
 import com.aducaky.api.core.handlers.stringHandler
-import com.aducaky.api.core.handlers.withErrorHandler
 import com.aducaky.api.core.http.HttpMethod
 import com.aducaky.api.core.http.HttpRequest
 import com.aducaky.api.core.http.HttpResponse
@@ -95,7 +94,8 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         UserServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -104,8 +104,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 
-        private val createHandler: Handler<User> =
-            jsonHandler<User>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val createHandler: Handler<User> = jsonHandler<User>(clientOptions.jsonMapper)
 
         override fun create(
             params: UserCreateParams,
@@ -123,7 +122,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createHandler.handle(it) }
                             .also {
@@ -135,8 +134,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
                 }
         }
 
-        private val retrieveHandler: Handler<User> =
-            jsonHandler<User>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val retrieveHandler: Handler<User> = jsonHandler<User>(clientOptions.jsonMapper)
 
         override fun retrieve(
             params: UserRetrieveParams,
@@ -156,7 +154,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveHandler.handle(it) }
                             .also {
@@ -168,7 +166,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
                 }
         }
 
-        private val updateHandler: Handler<Void?> = emptyHandler().withErrorHandler(errorHandler)
+        private val updateHandler: Handler<Void?> = emptyHandler()
 
         override fun update(
             params: UserUpdateParams,
@@ -189,11 +187,13 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable { response.use { updateHandler.handle(it) } }
+                    errorHandler.handle(response).parseable {
+                        response.use { updateHandler.handle(it) }
+                    }
                 }
         }
 
-        private val deleteHandler: Handler<Void?> = emptyHandler().withErrorHandler(errorHandler)
+        private val deleteHandler: Handler<Void?> = emptyHandler()
 
         override fun delete(
             params: UserDeleteParams,
@@ -214,12 +214,14 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable { response.use { deleteHandler.handle(it) } }
+                    errorHandler.handle(response).parseable {
+                        response.use { deleteHandler.handle(it) }
+                    }
                 }
         }
 
         private val createWithListHandler: Handler<User> =
-            jsonHandler<User>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+            jsonHandler<User>(clientOptions.jsonMapper)
 
         override fun createWithList(
             params: UserCreateWithListParams,
@@ -237,7 +239,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createWithListHandler.handle(it) }
                             .also {
@@ -249,7 +251,7 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
                 }
         }
 
-        private val loginHandler: Handler<String> = stringHandler().withErrorHandler(errorHandler)
+        private val loginHandler: Handler<String> = stringHandler()
 
         override fun login(
             params: UserLoginParams,
@@ -266,11 +268,13 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable { response.use { loginHandler.handle(it) } }
+                    errorHandler.handle(response).parseable {
+                        response.use { loginHandler.handle(it) }
+                    }
                 }
         }
 
-        private val logoutHandler: Handler<Void?> = emptyHandler().withErrorHandler(errorHandler)
+        private val logoutHandler: Handler<Void?> = emptyHandler()
 
         override fun logout(
             params: UserLogoutParams,
@@ -287,7 +291,9 @@ class UserServiceAsyncImpl internal constructor(private val clientOptions: Clien
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable { response.use { logoutHandler.handle(it) } }
+                    errorHandler.handle(response).parseable {
+                        response.use { logoutHandler.handle(it) }
+                    }
                 }
         }
     }

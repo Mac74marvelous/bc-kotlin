@@ -3,13 +3,12 @@
 package com.aducaky.api.services.async.store
 
 import com.aducaky.api.core.ClientOptions
-import com.aducaky.api.core.JsonValue
 import com.aducaky.api.core.RequestOptions
 import com.aducaky.api.core.checkRequired
 import com.aducaky.api.core.handlers.emptyHandler
+import com.aducaky.api.core.handlers.errorBodyHandler
 import com.aducaky.api.core.handlers.errorHandler
 import com.aducaky.api.core.handlers.jsonHandler
-import com.aducaky.api.core.handlers.withErrorHandler
 import com.aducaky.api.core.http.HttpMethod
 import com.aducaky.api.core.http.HttpRequest
 import com.aducaky.api.core.http.HttpResponse
@@ -62,7 +61,8 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         OrderServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -71,8 +71,7 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 
-        private val createHandler: Handler<Order> =
-            jsonHandler<Order>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val createHandler: Handler<Order> = jsonHandler<Order>(clientOptions.jsonMapper)
 
         override fun create(
             params: OrderCreateParams,
@@ -90,7 +89,7 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { createHandler.handle(it) }
                             .also {
@@ -102,8 +101,7 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
                 }
         }
 
-        private val retrieveHandler: Handler<Order> =
-            jsonHandler<Order>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val retrieveHandler: Handler<Order> = jsonHandler<Order>(clientOptions.jsonMapper)
 
         override fun retrieve(
             params: OrderRetrieveParams,
@@ -123,7 +121,7 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { retrieveHandler.handle(it) }
                             .also {
@@ -135,7 +133,7 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
                 }
         }
 
-        private val deleteHandler: Handler<Void?> = emptyHandler().withErrorHandler(errorHandler)
+        private val deleteHandler: Handler<Void?> = emptyHandler()
 
         override fun delete(
             params: OrderDeleteParams,
@@ -156,7 +154,9 @@ class OrderServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable { response.use { deleteHandler.handle(it) } }
+                    errorHandler.handle(response).parseable {
+                        response.use { deleteHandler.handle(it) }
+                    }
                 }
         }
     }
