@@ -3,13 +3,13 @@
 package com.aducaky.api.services.async
 
 import com.aducaky.api.core.ClientOptions
-import com.aducaky.api.core.JsonValue
 import com.aducaky.api.core.RequestOptions
+import com.aducaky.api.core.handlers.errorBodyHandler
 import com.aducaky.api.core.handlers.errorHandler
 import com.aducaky.api.core.handlers.jsonHandler
-import com.aducaky.api.core.handlers.withErrorHandler
 import com.aducaky.api.core.http.HttpMethod
 import com.aducaky.api.core.http.HttpRequest
+import com.aducaky.api.core.http.HttpResponse
 import com.aducaky.api.core.http.HttpResponse.Handler
 import com.aducaky.api.core.http.HttpResponseFor
 import com.aducaky.api.core.http.parseable
@@ -47,7 +47,8 @@ class StoreServiceAsyncImpl internal constructor(private val clientOptions: Clie
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         StoreServiceAsync.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val order: OrderServiceAsync.WithRawResponse by lazy {
             OrderServiceAsyncImpl.WithRawResponseImpl(clientOptions)
@@ -64,7 +65,6 @@ class StoreServiceAsyncImpl internal constructor(private val clientOptions: Clie
 
         private val listInventoryHandler: Handler<StoreListInventoryResponse> =
             jsonHandler<StoreListInventoryResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listInventory(
             params: StoreListInventoryParams,
@@ -81,7 +81,7 @@ class StoreServiceAsyncImpl internal constructor(private val clientOptions: Clie
             return request
                 .thenComposeAsync { clientOptions.httpClient.executeAsync(it, requestOptions) }
                 .thenApply { response ->
-                    response.parseable {
+                    errorHandler.handle(response).parseable {
                         response
                             .use { listInventoryHandler.handle(it) }
                             .also {

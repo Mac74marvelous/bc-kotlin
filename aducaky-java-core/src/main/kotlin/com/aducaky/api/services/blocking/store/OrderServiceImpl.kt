@@ -3,13 +3,12 @@
 package com.aducaky.api.services.blocking.store
 
 import com.aducaky.api.core.ClientOptions
-import com.aducaky.api.core.JsonValue
 import com.aducaky.api.core.RequestOptions
 import com.aducaky.api.core.checkRequired
 import com.aducaky.api.core.handlers.emptyHandler
+import com.aducaky.api.core.handlers.errorBodyHandler
 import com.aducaky.api.core.handlers.errorHandler
 import com.aducaky.api.core.handlers.jsonHandler
-import com.aducaky.api.core.handlers.withErrorHandler
 import com.aducaky.api.core.http.HttpMethod
 import com.aducaky.api.core.http.HttpRequest
 import com.aducaky.api.core.http.HttpResponse
@@ -53,7 +52,8 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         OrderService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
@@ -62,8 +62,7 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 
-        private val createHandler: Handler<Order> =
-            jsonHandler<Order>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val createHandler: Handler<Order> = jsonHandler<Order>(clientOptions.jsonMapper)
 
         override fun create(
             params: OrderCreateParams,
@@ -79,7 +78,7 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { createHandler.handle(it) }
                     .also {
@@ -90,8 +89,7 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
             }
         }
 
-        private val retrieveHandler: Handler<Order> =
-            jsonHandler<Order>(clientOptions.jsonMapper).withErrorHandler(errorHandler)
+        private val retrieveHandler: Handler<Order> = jsonHandler<Order>(clientOptions.jsonMapper)
 
         override fun retrieve(
             params: OrderRetrieveParams,
@@ -109,7 +107,7 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { retrieveHandler.handle(it) }
                     .also {
@@ -120,7 +118,7 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
             }
         }
 
-        private val deleteHandler: Handler<Void?> = emptyHandler().withErrorHandler(errorHandler)
+        private val deleteHandler: Handler<Void?> = emptyHandler()
 
         override fun delete(
             params: OrderDeleteParams,
@@ -139,7 +137,9 @@ class OrderServiceImpl internal constructor(private val clientOptions: ClientOpt
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable { response.use { deleteHandler.handle(it) } }
+            return errorHandler.handle(response).parseable {
+                response.use { deleteHandler.handle(it) }
+            }
         }
     }
 }

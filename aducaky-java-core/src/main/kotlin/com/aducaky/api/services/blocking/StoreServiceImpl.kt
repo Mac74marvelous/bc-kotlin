@@ -3,13 +3,13 @@
 package com.aducaky.api.services.blocking
 
 import com.aducaky.api.core.ClientOptions
-import com.aducaky.api.core.JsonValue
 import com.aducaky.api.core.RequestOptions
+import com.aducaky.api.core.handlers.errorBodyHandler
 import com.aducaky.api.core.handlers.errorHandler
 import com.aducaky.api.core.handlers.jsonHandler
-import com.aducaky.api.core.handlers.withErrorHandler
 import com.aducaky.api.core.http.HttpMethod
 import com.aducaky.api.core.http.HttpRequest
+import com.aducaky.api.core.http.HttpResponse
 import com.aducaky.api.core.http.HttpResponse.Handler
 import com.aducaky.api.core.http.HttpResponseFor
 import com.aducaky.api.core.http.parseable
@@ -46,7 +46,8 @@ class StoreServiceImpl internal constructor(private val clientOptions: ClientOpt
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         StoreService.WithRawResponse {
 
-        private val errorHandler: Handler<JsonValue> = errorHandler(clientOptions.jsonMapper)
+        private val errorHandler: Handler<HttpResponse> =
+            errorHandler(errorBodyHandler(clientOptions.jsonMapper))
 
         private val order: OrderService.WithRawResponse by lazy {
             OrderServiceImpl.WithRawResponseImpl(clientOptions)
@@ -63,7 +64,6 @@ class StoreServiceImpl internal constructor(private val clientOptions: ClientOpt
 
         private val listInventoryHandler: Handler<StoreListInventoryResponse> =
             jsonHandler<StoreListInventoryResponse>(clientOptions.jsonMapper)
-                .withErrorHandler(errorHandler)
 
         override fun listInventory(
             params: StoreListInventoryParams,
@@ -78,7 +78,7 @@ class StoreServiceImpl internal constructor(private val clientOptions: ClientOpt
                     .prepare(clientOptions, params)
             val requestOptions = requestOptions.applyDefaults(RequestOptions.from(clientOptions))
             val response = clientOptions.httpClient.execute(request, requestOptions)
-            return response.parseable {
+            return errorHandler.handle(response).parseable {
                 response
                     .use { listInventoryHandler.handle(it) }
                     .also {
