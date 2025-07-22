@@ -11,6 +11,7 @@ configure<PublishingExtension> {
             pom {
                 name.set("OpenAPI 3.0 Pet Store")
                 description.set("This is a sample Pet Store Server based on the OpenAPI 3.0 specification.")
+                url.set("https://www.github.com/Mac74marvelous/bc-kotlin")
 
                 licenses {
                     license {
