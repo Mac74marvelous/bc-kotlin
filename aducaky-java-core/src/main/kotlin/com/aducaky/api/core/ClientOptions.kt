@@ -220,8 +220,11 @@ private constructor(
         fun timeout(): Timeout = timeout
 
         fun fromEnv() = apply {
-            System.getenv("ADUCAKY_BASE_URL")?.let { baseUrl(it) }
-            System.getenv("PETSTORE_API_KEY")?.let { apiKey(it) }
+            (System.getProperty("aducaky.baseUrl") ?: System.getenv("ADUCAKY_BASE_URL"))?.let {
+                baseUrl(it)
+            }
+            (System.getProperty("aducaky.petstoreApiKey") ?: System.getenv("PETSTORE_API_KEY"))
+                ?.let { apiKey(it) }
         }
 
         /**

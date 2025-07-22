@@ -51,7 +51,8 @@ import com.aducaky.api.client.okhttp.AducakyOkHttpClient;
 import com.aducaky.api.models.Order;
 import com.aducaky.api.models.store.order.OrderCreateParams;
 
-// Configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+// Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
 AducakyClient client = AducakyOkHttpClient.fromEnv();
 
 Order order = client.store().order().create();
@@ -59,13 +60,14 @@ Order order = client.store().order().create();
 
 ## Client configuration
 
-Configure the client using environment variables:
+Configure the client using system properties or environment variables:
 
 ```java
 import com.aducaky.api.client.AducakyClient;
 import com.aducaky.api.client.okhttp.AducakyOkHttpClient;
 
-// Configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+// Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
 AducakyClient client = AducakyOkHttpClient.fromEnv();
 ```
 
@@ -87,7 +89,8 @@ import com.aducaky.api.client.AducakyClient;
 import com.aducaky.api.client.okhttp.AducakyOkHttpClient;
 
 AducakyClient client = AducakyOkHttpClient.builder()
-    // Configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+    // Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
+    Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
     .fromEnv()
     .apiKey("My API Key")
     .build();
@@ -95,10 +98,12 @@ AducakyClient client = AducakyOkHttpClient.builder()
 
 See this table for the available options:
 
-| Setter    | Environment variable | Required | Default value                           |
-| --------- | -------------------- | -------- | --------------------------------------- |
-| `apiKey`  | `PETSTORE_API_KEY`   | true     | -                                       |
-| `baseUrl` | `ADUCAKY_BASE_URL`   | true     | `"https://petstore3.swagger.io/api/v3"` |
+| Setter    | System property          | Environment variable | Required | Default value                           |
+| --------- | ------------------------ | -------------------- | -------- | --------------------------------------- |
+| `apiKey`  | `aducaky.petstoreApiKey` | `PETSTORE_API_KEY`   | true     | -                                       |
+| `baseUrl` | `aducaky.baseUrl`        | `ADUCAKY_BASE_URL`   | true     | `"https://petstore3.swagger.io/api/v3"` |
+
+System properties take precedence over environment variables.
 
 > [!TIP]
 > Don't create more than one client in the same application. Each client has a connection pool and
@@ -144,7 +149,8 @@ import com.aducaky.api.models.Order;
 import com.aducaky.api.models.store.order.OrderCreateParams;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+// Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
 AducakyClient client = AducakyOkHttpClient.fromEnv();
 
 CompletableFuture<Order> order = client.async().store().order().create();
@@ -159,7 +165,8 @@ import com.aducaky.api.models.Order;
 import com.aducaky.api.models.store.order.OrderCreateParams;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+// Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
 AducakyClientAsync client = AducakyOkHttpClientAsync.fromEnv();
 
 CompletableFuture<Order> order = client.store().order().create();
