@@ -90,7 +90,7 @@ import com.aducaky.api.client.okhttp.AducakyOkHttpClient;
 
 AducakyClient client = AducakyOkHttpClient.builder()
     // Configures using the `aducaky.petstoreApiKey` and `aducaky.baseUrl` system properties
-    Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
+    // Or configures using the `PETSTORE_API_KEY` and `ADUCAKY_BASE_URL` environment variables
     .fromEnv()
     .apiKey("My API Key")
     .build();
