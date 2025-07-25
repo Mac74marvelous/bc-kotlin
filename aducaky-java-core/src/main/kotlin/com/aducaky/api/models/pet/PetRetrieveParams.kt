@@ -19,8 +19,10 @@ private constructor(
 
     fun petId(): Optional<Long> = Optional.ofNullable(petId)
 
+    /** Additional headers to send with the request. */
     fun _additionalHeaders(): Headers = additionalHeaders
 
+    /** Additional query param to send with the request. */
     fun _additionalQueryParams(): QueryParams = additionalQueryParams
 
     fun toBuilder() = Builder().from(this)
