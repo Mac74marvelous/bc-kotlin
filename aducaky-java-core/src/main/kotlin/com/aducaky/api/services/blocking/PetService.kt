@@ -36,80 +36,80 @@ interface PetService {
     /** Add a new pet to the store */
     fun create(params: PetCreateParams): Pet = create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: PetCreateParams, requestOptions: RequestOptions = RequestOptions.none()): Pet
 
     /** Returns a single pet */
     fun retrieve(petId: Long): Pet = retrieve(petId, PetRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         petId: Long,
         params: PetRetrieveParams = PetRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Pet = retrieve(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(petId: Long, params: PetRetrieveParams = PetRetrieveParams.none()): Pet =
         retrieve(petId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: PetRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Pet
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: PetRetrieveParams): Pet = retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(petId: Long, requestOptions: RequestOptions): Pet =
         retrieve(petId, PetRetrieveParams.none(), requestOptions)
 
     /** Update an existing pet by Id */
     fun update(params: PetUpdateParams): Pet = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: PetUpdateParams, requestOptions: RequestOptions = RequestOptions.none()): Pet
 
     /** delete a pet */
     fun delete(petId: Long) = delete(petId, PetDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         petId: Long,
         params: PetDeleteParams = PetDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ) = delete(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(petId: Long, params: PetDeleteParams = PetDeleteParams.none()) =
         delete(petId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: PetDeleteParams, requestOptions: RequestOptions = RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: PetDeleteParams) = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(petId: Long, requestOptions: RequestOptions) =
         delete(petId, PetDeleteParams.none(), requestOptions)
 
     /** Multiple status values can be provided with comma separated strings */
     fun findByStatus(): List<Pet> = findByStatus(PetFindByStatusParams.none())
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(
         params: PetFindByStatusParams = PetFindByStatusParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<Pet>
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(params: PetFindByStatusParams = PetFindByStatusParams.none()): List<Pet> =
         findByStatus(params, RequestOptions.none())
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(requestOptions: RequestOptions): List<Pet> =
         findByStatus(PetFindByStatusParams.none(), requestOptions)
 
@@ -118,44 +118,44 @@ interface PetService {
      */
     fun findByTags(): List<Pet> = findByTags(PetFindByTagsParams.none())
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(
         params: PetFindByTagsParams = PetFindByTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): List<Pet>
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(params: PetFindByTagsParams = PetFindByTagsParams.none()): List<Pet> =
         findByTags(params, RequestOptions.none())
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(requestOptions: RequestOptions): List<Pet> =
         findByTags(PetFindByTagsParams.none(), requestOptions)
 
     /** Updates a pet in the store with form data */
     fun updateById(petId: Long) = updateById(petId, PetUpdateByIdParams.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(
         petId: Long,
         params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ) = updateById(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(petId: Long, params: PetUpdateByIdParams = PetUpdateByIdParams.none()) =
         updateById(petId, params, RequestOptions.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(
         params: PetUpdateByIdParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     )
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(params: PetUpdateByIdParams) = updateById(params, RequestOptions.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(petId: Long, requestOptions: RequestOptions) =
         updateById(petId, PetUpdateByIdParams.none(), requestOptions)
 
@@ -163,30 +163,30 @@ interface PetService {
     fun uploadImage(petId: Long): PetUploadImageResponse =
         uploadImage(petId, PetUploadImageParams.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         petId: Long,
         params: PetUploadImageParams = PetUploadImageParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): PetUploadImageResponse = uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         petId: Long,
         params: PetUploadImageParams = PetUploadImageParams.none(),
     ): PetUploadImageResponse = uploadImage(petId, params, RequestOptions.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         params: PetUploadImageParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): PetUploadImageResponse
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(params: PetUploadImageParams): PetUploadImageResponse =
         uploadImage(params, RequestOptions.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(petId: Long, requestOptions: RequestOptions): PetUploadImageResponse =
         uploadImage(petId, PetUploadImageParams.none(), requestOptions)
 
@@ -208,7 +208,7 @@ interface PetService {
         fun create(params: PetCreateParams): HttpResponseFor<Pet> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: PetCreateParams,
@@ -222,7 +222,7 @@ interface PetService {
         @MustBeClosed
         fun retrieve(petId: Long): HttpResponseFor<Pet> = retrieve(petId, PetRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             petId: Long,
@@ -230,26 +230,26 @@ interface PetService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Pet> = retrieve(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             petId: Long,
             params: PetRetrieveParams = PetRetrieveParams.none(),
         ): HttpResponseFor<Pet> = retrieve(petId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: PetRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Pet>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: PetRetrieveParams): HttpResponseFor<Pet> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(petId: Long, requestOptions: RequestOptions): HttpResponseFor<Pet> =
             retrieve(petId, PetRetrieveParams.none(), requestOptions)
@@ -262,7 +262,7 @@ interface PetService {
         fun update(params: PetUpdateParams): HttpResponseFor<Pet> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: PetUpdateParams,
@@ -275,7 +275,7 @@ interface PetService {
          */
         @MustBeClosed fun delete(petId: Long): HttpResponse = delete(petId, PetDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             petId: Long,
@@ -283,23 +283,23 @@ interface PetService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse = delete(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(petId: Long, params: PetDeleteParams = PetDeleteParams.none()): HttpResponse =
             delete(petId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: PetDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: PetDeleteParams): HttpResponse = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(petId: Long, requestOptions: RequestOptions): HttpResponse =
             delete(petId, PetDeleteParams.none(), requestOptions)
@@ -311,20 +311,20 @@ interface PetService {
         @MustBeClosed
         fun findByStatus(): HttpResponseFor<List<Pet>> = findByStatus(PetFindByStatusParams.none())
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         @MustBeClosed
         fun findByStatus(
             params: PetFindByStatusParams = PetFindByStatusParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<Pet>>
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         @MustBeClosed
         fun findByStatus(
             params: PetFindByStatusParams = PetFindByStatusParams.none()
         ): HttpResponseFor<List<Pet>> = findByStatus(params, RequestOptions.none())
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         @MustBeClosed
         fun findByStatus(requestOptions: RequestOptions): HttpResponseFor<List<Pet>> =
             findByStatus(PetFindByStatusParams.none(), requestOptions)
@@ -336,20 +336,20 @@ interface PetService {
         @MustBeClosed
         fun findByTags(): HttpResponseFor<List<Pet>> = findByTags(PetFindByTagsParams.none())
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         @MustBeClosed
         fun findByTags(
             params: PetFindByTagsParams = PetFindByTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<List<Pet>>
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         @MustBeClosed
         fun findByTags(
             params: PetFindByTagsParams = PetFindByTagsParams.none()
         ): HttpResponseFor<List<Pet>> = findByTags(params, RequestOptions.none())
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         @MustBeClosed
         fun findByTags(requestOptions: RequestOptions): HttpResponseFor<List<Pet>> =
             findByTags(PetFindByTagsParams.none(), requestOptions)
@@ -361,7 +361,7 @@ interface PetService {
         @MustBeClosed
         fun updateById(petId: Long): HttpResponse = updateById(petId, PetUpdateByIdParams.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         @MustBeClosed
         fun updateById(
             petId: Long,
@@ -369,26 +369,26 @@ interface PetService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse = updateById(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [updateById] */
+        /** @see updateById */
         @MustBeClosed
         fun updateById(
             petId: Long,
             params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
         ): HttpResponse = updateById(petId, params, RequestOptions.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         @MustBeClosed
         fun updateById(
             params: PetUpdateByIdParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [updateById] */
+        /** @see updateById */
         @MustBeClosed
         fun updateById(params: PetUpdateByIdParams): HttpResponse =
             updateById(params, RequestOptions.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         @MustBeClosed
         fun updateById(petId: Long, requestOptions: RequestOptions): HttpResponse =
             updateById(petId, PetUpdateByIdParams.none(), requestOptions)
@@ -401,7 +401,7 @@ interface PetService {
         fun uploadImage(petId: Long): HttpResponseFor<PetUploadImageResponse> =
             uploadImage(petId, PetUploadImageParams.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             petId: Long,
@@ -410,7 +410,7 @@ interface PetService {
         ): HttpResponseFor<PetUploadImageResponse> =
             uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             petId: Long,
@@ -418,19 +418,19 @@ interface PetService {
         ): HttpResponseFor<PetUploadImageResponse> =
             uploadImage(petId, params, RequestOptions.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             params: PetUploadImageParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<PetUploadImageResponse>
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(params: PetUploadImageParams): HttpResponseFor<PetUploadImageResponse> =
             uploadImage(params, RequestOptions.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             petId: Long,

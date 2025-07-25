@@ -30,17 +30,17 @@ interface OrderServiceAsync {
     /** Place a new order in the store */
     fun create(): CompletableFuture<Order> = create(OrderCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OrderCreateParams = OrderCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Order>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: OrderCreateParams = OrderCreateParams.none()): CompletableFuture<Order> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<Order> =
         create(OrderCreateParams.none(), requestOptions)
 
@@ -51,7 +51,7 @@ interface OrderServiceAsync {
     fun retrieve(orderId: Long): CompletableFuture<Order> =
         retrieve(orderId, OrderRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         orderId: Long,
         params: OrderRetrieveParams = OrderRetrieveParams.none(),
@@ -59,23 +59,23 @@ interface OrderServiceAsync {
     ): CompletableFuture<Order> =
         retrieve(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         orderId: Long,
         params: OrderRetrieveParams = OrderRetrieveParams.none(),
     ): CompletableFuture<Order> = retrieve(orderId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: OrderRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Order>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: OrderRetrieveParams): CompletableFuture<Order> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(orderId: Long, requestOptions: RequestOptions): CompletableFuture<Order> =
         retrieve(orderId, OrderRetrieveParams.none(), requestOptions)
 
@@ -85,7 +85,7 @@ interface OrderServiceAsync {
      */
     fun delete(orderId: Long): CompletableFuture<Void?> = delete(orderId, OrderDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         orderId: Long,
         params: OrderDeleteParams = OrderDeleteParams.none(),
@@ -93,23 +93,23 @@ interface OrderServiceAsync {
     ): CompletableFuture<Void?> =
         delete(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         orderId: Long,
         params: OrderDeleteParams = OrderDeleteParams.none(),
     ): CompletableFuture<Void?> = delete(orderId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: OrderDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: OrderDeleteParams): CompletableFuture<Void?> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(orderId: Long, requestOptions: RequestOptions): CompletableFuture<Void?> =
         delete(orderId, OrderDeleteParams.none(), requestOptions)
 
@@ -131,18 +131,18 @@ interface OrderServiceAsync {
          */
         fun create(): CompletableFuture<HttpResponseFor<Order>> = create(OrderCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: OrderCreateParams = OrderCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Order>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: OrderCreateParams = OrderCreateParams.none()
         ): CompletableFuture<HttpResponseFor<Order>> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(requestOptions: RequestOptions): CompletableFuture<HttpResponseFor<Order>> =
             create(OrderCreateParams.none(), requestOptions)
 
@@ -153,7 +153,7 @@ interface OrderServiceAsync {
         fun retrieve(orderId: Long): CompletableFuture<HttpResponseFor<Order>> =
             retrieve(orderId, OrderRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             orderId: Long,
             params: OrderRetrieveParams = OrderRetrieveParams.none(),
@@ -161,24 +161,24 @@ interface OrderServiceAsync {
         ): CompletableFuture<HttpResponseFor<Order>> =
             retrieve(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             orderId: Long,
             params: OrderRetrieveParams = OrderRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<Order>> =
             retrieve(orderId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: OrderRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Order>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(params: OrderRetrieveParams): CompletableFuture<HttpResponseFor<Order>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             orderId: Long,
             requestOptions: RequestOptions,
@@ -192,7 +192,7 @@ interface OrderServiceAsync {
         fun delete(orderId: Long): CompletableFuture<HttpResponse> =
             delete(orderId, OrderDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             orderId: Long,
             params: OrderDeleteParams = OrderDeleteParams.none(),
@@ -200,23 +200,23 @@ interface OrderServiceAsync {
         ): CompletableFuture<HttpResponse> =
             delete(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             orderId: Long,
             params: OrderDeleteParams = OrderDeleteParams.none(),
         ): CompletableFuture<HttpResponse> = delete(orderId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: OrderDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(params: OrderDeleteParams): CompletableFuture<HttpResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(orderId: Long, requestOptions: RequestOptions): CompletableFuture<HttpResponse> =
             delete(orderId, OrderDeleteParams.none(), requestOptions)
     }
