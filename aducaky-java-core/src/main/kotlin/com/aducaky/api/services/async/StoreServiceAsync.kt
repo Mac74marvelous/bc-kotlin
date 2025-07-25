@@ -31,18 +31,18 @@ interface StoreServiceAsync {
     fun listInventory(): CompletableFuture<StoreListInventoryResponse> =
         listInventory(StoreListInventoryParams.none())
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(
         params: StoreListInventoryParams = StoreListInventoryParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<StoreListInventoryResponse>
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(
         params: StoreListInventoryParams = StoreListInventoryParams.none()
     ): CompletableFuture<StoreListInventoryResponse> = listInventory(params, RequestOptions.none())
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(
         requestOptions: RequestOptions
     ): CompletableFuture<StoreListInventoryResponse> =
@@ -69,19 +69,19 @@ interface StoreServiceAsync {
         fun listInventory(): CompletableFuture<HttpResponseFor<StoreListInventoryResponse>> =
             listInventory(StoreListInventoryParams.none())
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         fun listInventory(
             params: StoreListInventoryParams = StoreListInventoryParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<StoreListInventoryResponse>>
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         fun listInventory(
             params: StoreListInventoryParams = StoreListInventoryParams.none()
         ): CompletableFuture<HttpResponseFor<StoreListInventoryResponse>> =
             listInventory(params, RequestOptions.none())
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         fun listInventory(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<StoreListInventoryResponse>> =

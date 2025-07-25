@@ -37,7 +37,7 @@ interface PetServiceAsync {
     fun create(params: PetCreateParams): CompletableFuture<Pet> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: PetCreateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -46,30 +46,30 @@ interface PetServiceAsync {
     /** Returns a single pet */
     fun retrieve(petId: Long): CompletableFuture<Pet> = retrieve(petId, PetRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         petId: Long,
         params: PetRetrieveParams = PetRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Pet> = retrieve(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         petId: Long,
         params: PetRetrieveParams = PetRetrieveParams.none(),
     ): CompletableFuture<Pet> = retrieve(petId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: PetRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Pet>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: PetRetrieveParams): CompletableFuture<Pet> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(petId: Long, requestOptions: RequestOptions): CompletableFuture<Pet> =
         retrieve(petId, PetRetrieveParams.none(), requestOptions)
 
@@ -77,7 +77,7 @@ interface PetServiceAsync {
     fun update(params: PetUpdateParams): CompletableFuture<Pet> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: PetUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
@@ -86,48 +86,48 @@ interface PetServiceAsync {
     /** delete a pet */
     fun delete(petId: Long): CompletableFuture<Void?> = delete(petId, PetDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         petId: Long,
         params: PetDeleteParams = PetDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?> = delete(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         petId: Long,
         params: PetDeleteParams = PetDeleteParams.none(),
     ): CompletableFuture<Void?> = delete(petId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: PetDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: PetDeleteParams): CompletableFuture<Void?> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(petId: Long, requestOptions: RequestOptions): CompletableFuture<Void?> =
         delete(petId, PetDeleteParams.none(), requestOptions)
 
     /** Multiple status values can be provided with comma separated strings */
     fun findByStatus(): CompletableFuture<List<Pet>> = findByStatus(PetFindByStatusParams.none())
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(
         params: PetFindByStatusParams = PetFindByStatusParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<Pet>>
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(
         params: PetFindByStatusParams = PetFindByStatusParams.none()
     ): CompletableFuture<List<Pet>> = findByStatus(params, RequestOptions.none())
 
-    /** @see [findByStatus] */
+    /** @see findByStatus */
     fun findByStatus(requestOptions: RequestOptions): CompletableFuture<List<Pet>> =
         findByStatus(PetFindByStatusParams.none(), requestOptions)
 
@@ -136,18 +136,18 @@ interface PetServiceAsync {
      */
     fun findByTags(): CompletableFuture<List<Pet>> = findByTags(PetFindByTagsParams.none())
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(
         params: PetFindByTagsParams = PetFindByTagsParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<List<Pet>>
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(
         params: PetFindByTagsParams = PetFindByTagsParams.none()
     ): CompletableFuture<List<Pet>> = findByTags(params, RequestOptions.none())
 
-    /** @see [findByTags] */
+    /** @see findByTags */
     fun findByTags(requestOptions: RequestOptions): CompletableFuture<List<Pet>> =
         findByTags(PetFindByTagsParams.none(), requestOptions)
 
@@ -155,7 +155,7 @@ interface PetServiceAsync {
     fun updateById(petId: Long): CompletableFuture<Void?> =
         updateById(petId, PetUpdateByIdParams.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(
         petId: Long,
         params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
@@ -163,23 +163,23 @@ interface PetServiceAsync {
     ): CompletableFuture<Void?> =
         updateById(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(
         petId: Long,
         params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
     ): CompletableFuture<Void?> = updateById(petId, params, RequestOptions.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(
         params: PetUpdateByIdParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(params: PetUpdateByIdParams): CompletableFuture<Void?> =
         updateById(params, RequestOptions.none())
 
-    /** @see [updateById] */
+    /** @see updateById */
     fun updateById(petId: Long, requestOptions: RequestOptions): CompletableFuture<Void?> =
         updateById(petId, PetUpdateByIdParams.none(), requestOptions)
 
@@ -187,7 +187,7 @@ interface PetServiceAsync {
     fun uploadImage(petId: Long): CompletableFuture<PetUploadImageResponse> =
         uploadImage(petId, PetUploadImageParams.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         petId: Long,
         params: PetUploadImageParams = PetUploadImageParams.none(),
@@ -195,23 +195,23 @@ interface PetServiceAsync {
     ): CompletableFuture<PetUploadImageResponse> =
         uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         petId: Long,
         params: PetUploadImageParams = PetUploadImageParams.none(),
     ): CompletableFuture<PetUploadImageResponse> = uploadImage(petId, params, RequestOptions.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         params: PetUploadImageParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PetUploadImageResponse>
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(params: PetUploadImageParams): CompletableFuture<PetUploadImageResponse> =
         uploadImage(params, RequestOptions.none())
 
-    /** @see [uploadImage] */
+    /** @see uploadImage */
     fun uploadImage(
         petId: Long,
         requestOptions: RequestOptions,
@@ -235,7 +235,7 @@ interface PetServiceAsync {
         fun create(params: PetCreateParams): CompletableFuture<HttpResponseFor<Pet>> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: PetCreateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -248,7 +248,7 @@ interface PetServiceAsync {
         fun retrieve(petId: Long): CompletableFuture<HttpResponseFor<Pet>> =
             retrieve(petId, PetRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             petId: Long,
             params: PetRetrieveParams = PetRetrieveParams.none(),
@@ -256,23 +256,23 @@ interface PetServiceAsync {
         ): CompletableFuture<HttpResponseFor<Pet>> =
             retrieve(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             petId: Long,
             params: PetRetrieveParams = PetRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<Pet>> = retrieve(petId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: PetRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<Pet>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(params: PetRetrieveParams): CompletableFuture<HttpResponseFor<Pet>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             petId: Long,
             requestOptions: RequestOptions,
@@ -286,7 +286,7 @@ interface PetServiceAsync {
         fun update(params: PetUpdateParams): CompletableFuture<HttpResponseFor<Pet>> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: PetUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
@@ -299,7 +299,7 @@ interface PetServiceAsync {
         fun delete(petId: Long): CompletableFuture<HttpResponse> =
             delete(petId, PetDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             petId: Long,
             params: PetDeleteParams = PetDeleteParams.none(),
@@ -307,23 +307,23 @@ interface PetServiceAsync {
         ): CompletableFuture<HttpResponse> =
             delete(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             petId: Long,
             params: PetDeleteParams = PetDeleteParams.none(),
         ): CompletableFuture<HttpResponse> = delete(petId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: PetDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(params: PetDeleteParams): CompletableFuture<HttpResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(petId: Long, requestOptions: RequestOptions): CompletableFuture<HttpResponse> =
             delete(petId, PetDeleteParams.none(), requestOptions)
 
@@ -334,19 +334,19 @@ interface PetServiceAsync {
         fun findByStatus(): CompletableFuture<HttpResponseFor<List<Pet>>> =
             findByStatus(PetFindByStatusParams.none())
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         fun findByStatus(
             params: PetFindByStatusParams = PetFindByStatusParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<Pet>>>
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         fun findByStatus(
             params: PetFindByStatusParams = PetFindByStatusParams.none()
         ): CompletableFuture<HttpResponseFor<List<Pet>>> =
             findByStatus(params, RequestOptions.none())
 
-        /** @see [findByStatus] */
+        /** @see findByStatus */
         fun findByStatus(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<Pet>>> =
@@ -359,18 +359,18 @@ interface PetServiceAsync {
         fun findByTags(): CompletableFuture<HttpResponseFor<List<Pet>>> =
             findByTags(PetFindByTagsParams.none())
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         fun findByTags(
             params: PetFindByTagsParams = PetFindByTagsParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<List<Pet>>>
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         fun findByTags(
             params: PetFindByTagsParams = PetFindByTagsParams.none()
         ): CompletableFuture<HttpResponseFor<List<Pet>>> = findByTags(params, RequestOptions.none())
 
-        /** @see [findByTags] */
+        /** @see findByTags */
         fun findByTags(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<List<Pet>>> =
@@ -383,7 +383,7 @@ interface PetServiceAsync {
         fun updateById(petId: Long): CompletableFuture<HttpResponse> =
             updateById(petId, PetUpdateByIdParams.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         fun updateById(
             petId: Long,
             params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
@@ -391,23 +391,23 @@ interface PetServiceAsync {
         ): CompletableFuture<HttpResponse> =
             updateById(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [updateById] */
+        /** @see updateById */
         fun updateById(
             petId: Long,
             params: PetUpdateByIdParams = PetUpdateByIdParams.none(),
         ): CompletableFuture<HttpResponse> = updateById(petId, params, RequestOptions.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         fun updateById(
             params: PetUpdateByIdParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [updateById] */
+        /** @see updateById */
         fun updateById(params: PetUpdateByIdParams): CompletableFuture<HttpResponse> =
             updateById(params, RequestOptions.none())
 
-        /** @see [updateById] */
+        /** @see updateById */
         fun updateById(
             petId: Long,
             requestOptions: RequestOptions,
@@ -421,7 +421,7 @@ interface PetServiceAsync {
         fun uploadImage(petId: Long): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
             uploadImage(petId, PetUploadImageParams.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         fun uploadImage(
             petId: Long,
             params: PetUploadImageParams = PetUploadImageParams.none(),
@@ -429,26 +429,26 @@ interface PetServiceAsync {
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
             uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         fun uploadImage(
             petId: Long,
             params: PetUploadImageParams = PetUploadImageParams.none(),
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
             uploadImage(petId, params, RequestOptions.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         fun uploadImage(
             params: PetUploadImageParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>>
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         fun uploadImage(
             params: PetUploadImageParams
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
             uploadImage(params, RequestOptions.none())
 
-        /** @see [uploadImage] */
+        /** @see uploadImage */
         fun uploadImage(
             petId: Long,
             requestOptions: RequestOptions,

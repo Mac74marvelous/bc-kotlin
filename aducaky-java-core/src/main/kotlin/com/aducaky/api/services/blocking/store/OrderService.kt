@@ -30,17 +30,17 @@ interface OrderService {
     /** Place a new order in the store */
     fun create(): Order = create(OrderCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: OrderCreateParams = OrderCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Order
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: OrderCreateParams = OrderCreateParams.none()): Order =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): Order =
         create(OrderCreateParams.none(), requestOptions)
 
@@ -50,27 +50,27 @@ interface OrderService {
      */
     fun retrieve(orderId: Long): Order = retrieve(orderId, OrderRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         orderId: Long,
         params: OrderRetrieveParams = OrderRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Order = retrieve(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(orderId: Long, params: OrderRetrieveParams = OrderRetrieveParams.none()): Order =
         retrieve(orderId, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: OrderRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): Order
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: OrderRetrieveParams): Order = retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(orderId: Long, requestOptions: RequestOptions): Order =
         retrieve(orderId, OrderRetrieveParams.none(), requestOptions)
 
@@ -80,24 +80,24 @@ interface OrderService {
      */
     fun delete(orderId: Long) = delete(orderId, OrderDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         orderId: Long,
         params: OrderDeleteParams = OrderDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ) = delete(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(orderId: Long, params: OrderDeleteParams = OrderDeleteParams.none()) =
         delete(orderId, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: OrderDeleteParams, requestOptions: RequestOptions = RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: OrderDeleteParams) = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(orderId: Long, requestOptions: RequestOptions) =
         delete(orderId, OrderDeleteParams.none(), requestOptions)
 
@@ -117,19 +117,19 @@ interface OrderService {
          */
         @MustBeClosed fun create(): HttpResponseFor<Order> = create(OrderCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: OrderCreateParams = OrderCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Order>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: OrderCreateParams = OrderCreateParams.none()): HttpResponseFor<Order> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<Order> =
             create(OrderCreateParams.none(), requestOptions)
@@ -142,7 +142,7 @@ interface OrderService {
         fun retrieve(orderId: Long): HttpResponseFor<Order> =
             retrieve(orderId, OrderRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             orderId: Long,
@@ -151,26 +151,26 @@ interface OrderService {
         ): HttpResponseFor<Order> =
             retrieve(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             orderId: Long,
             params: OrderRetrieveParams = OrderRetrieveParams.none(),
         ): HttpResponseFor<Order> = retrieve(orderId, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: OrderRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<Order>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: OrderRetrieveParams): HttpResponseFor<Order> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(orderId: Long, requestOptions: RequestOptions): HttpResponseFor<Order> =
             retrieve(orderId, OrderRetrieveParams.none(), requestOptions)
@@ -182,7 +182,7 @@ interface OrderService {
         @MustBeClosed
         fun delete(orderId: Long): HttpResponse = delete(orderId, OrderDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             orderId: Long,
@@ -190,25 +190,25 @@ interface OrderService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse = delete(params.toBuilder().orderId(orderId).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             orderId: Long,
             params: OrderDeleteParams = OrderDeleteParams.none(),
         ): HttpResponse = delete(orderId, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: OrderDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: OrderDeleteParams): HttpResponse = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(orderId: Long, requestOptions: RequestOptions): HttpResponse =
             delete(orderId, OrderDeleteParams.none(), requestOptions)

@@ -30,18 +30,18 @@ interface StoreService {
     /** Returns a map of status codes to quantities */
     fun listInventory(): StoreListInventoryResponse = listInventory(StoreListInventoryParams.none())
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(
         params: StoreListInventoryParams = StoreListInventoryParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): StoreListInventoryResponse
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(
         params: StoreListInventoryParams = StoreListInventoryParams.none()
     ): StoreListInventoryResponse = listInventory(params, RequestOptions.none())
 
-    /** @see [listInventory] */
+    /** @see listInventory */
     fun listInventory(requestOptions: RequestOptions): StoreListInventoryResponse =
         listInventory(StoreListInventoryParams.none(), requestOptions)
 
@@ -65,21 +65,21 @@ interface StoreService {
         fun listInventory(): HttpResponseFor<StoreListInventoryResponse> =
             listInventory(StoreListInventoryParams.none())
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         @MustBeClosed
         fun listInventory(
             params: StoreListInventoryParams = StoreListInventoryParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<StoreListInventoryResponse>
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         @MustBeClosed
         fun listInventory(
             params: StoreListInventoryParams = StoreListInventoryParams.none()
         ): HttpResponseFor<StoreListInventoryResponse> =
             listInventory(params, RequestOptions.none())
 
-        /** @see [listInventory] */
+        /** @see listInventory */
         @MustBeClosed
         fun listInventory(
             requestOptions: RequestOptions

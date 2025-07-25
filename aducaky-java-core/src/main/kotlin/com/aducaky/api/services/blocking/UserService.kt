@@ -34,143 +34,143 @@ interface UserService {
     /** This can only be done by the logged in user. */
     fun create(): User = create(UserCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: UserCreateParams = UserCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): User
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: UserCreateParams = UserCreateParams.none()): User =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): User =
         create(UserCreateParams.none(), requestOptions)
 
     /** Get user by user name */
     fun retrieve(username: String): User = retrieve(username, UserRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         username: String,
         params: UserRetrieveParams = UserRetrieveParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): User = retrieve(params.toBuilder().username(username).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(username: String, params: UserRetrieveParams = UserRetrieveParams.none()): User =
         retrieve(username, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: UserRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): User
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: UserRetrieveParams): User = retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(username: String, requestOptions: RequestOptions): User =
         retrieve(username, UserRetrieveParams.none(), requestOptions)
 
     /** This can only be done by the logged in user. */
     fun update(existingUsername: String) = update(existingUsername, UserUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         existingUsername: String,
         params: UserUpdateParams = UserUpdateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ) = update(params.toBuilder().existingUsername(existingUsername).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(existingUsername: String, params: UserUpdateParams = UserUpdateParams.none()) =
         update(existingUsername, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: UserUpdateParams, requestOptions: RequestOptions = RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: UserUpdateParams) = update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(existingUsername: String, requestOptions: RequestOptions) =
         update(existingUsername, UserUpdateParams.none(), requestOptions)
 
     /** This can only be done by the logged in user. */
     fun delete(username: String) = delete(username, UserDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         username: String,
         params: UserDeleteParams = UserDeleteParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ) = delete(params.toBuilder().username(username).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(username: String, params: UserDeleteParams = UserDeleteParams.none()) =
         delete(username, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: UserDeleteParams, requestOptions: RequestOptions = RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: UserDeleteParams) = delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(username: String, requestOptions: RequestOptions) =
         delete(username, UserDeleteParams.none(), requestOptions)
 
     /** Creates list of users with given input array */
     fun createWithList(): User = createWithList(UserCreateWithListParams.none())
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(
         params: UserCreateWithListParams = UserCreateWithListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): User
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(params: UserCreateWithListParams = UserCreateWithListParams.none()): User =
         createWithList(params, RequestOptions.none())
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(requestOptions: RequestOptions): User =
         createWithList(UserCreateWithListParams.none(), requestOptions)
 
     /** Logs user into the system */
     fun login(): String = login(UserLoginParams.none())
 
-    /** @see [login] */
+    /** @see login */
     fun login(
         params: UserLoginParams = UserLoginParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): String
 
-    /** @see [login] */
+    /** @see login */
     fun login(params: UserLoginParams = UserLoginParams.none()): String =
         login(params, RequestOptions.none())
 
-    /** @see [login] */
+    /** @see login */
     fun login(requestOptions: RequestOptions): String =
         login(UserLoginParams.none(), requestOptions)
 
     /** Logs out current logged in user session */
     fun logout() = logout(UserLogoutParams.none())
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(
         params: UserLogoutParams = UserLogoutParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     )
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(params: UserLogoutParams = UserLogoutParams.none()) =
         logout(params, RequestOptions.none())
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(requestOptions: RequestOptions) = logout(UserLogoutParams.none(), requestOptions)
 
     /** A view of [UserService] that provides access to raw HTTP responses for each method. */
@@ -189,19 +189,19 @@ interface UserService {
          */
         @MustBeClosed fun create(): HttpResponseFor<User> = create(UserCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(
             params: UserCreateParams = UserCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<User>
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(params: UserCreateParams = UserCreateParams.none()): HttpResponseFor<User> =
             create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         @MustBeClosed
         fun create(requestOptions: RequestOptions): HttpResponseFor<User> =
             create(UserCreateParams.none(), requestOptions)
@@ -214,7 +214,7 @@ interface UserService {
         fun retrieve(username: String): HttpResponseFor<User> =
             retrieve(username, UserRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             username: String,
@@ -223,26 +223,26 @@ interface UserService {
         ): HttpResponseFor<User> =
             retrieve(params.toBuilder().username(username).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             username: String,
             params: UserRetrieveParams = UserRetrieveParams.none(),
         ): HttpResponseFor<User> = retrieve(username, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(
             params: UserRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<User>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(params: UserRetrieveParams): HttpResponseFor<User> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         @MustBeClosed
         fun retrieve(username: String, requestOptions: RequestOptions): HttpResponseFor<User> =
             retrieve(username, UserRetrieveParams.none(), requestOptions)
@@ -255,7 +255,7 @@ interface UserService {
         fun update(existingUsername: String): HttpResponse =
             update(existingUsername, UserUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             existingUsername: String,
@@ -264,25 +264,25 @@ interface UserService {
         ): HttpResponse =
             update(params.toBuilder().existingUsername(existingUsername).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             existingUsername: String,
             params: UserUpdateParams = UserUpdateParams.none(),
         ): HttpResponse = update(existingUsername, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(
             params: UserUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(params: UserUpdateParams): HttpResponse = update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         @MustBeClosed
         fun update(existingUsername: String, requestOptions: RequestOptions): HttpResponse =
             update(existingUsername, UserUpdateParams.none(), requestOptions)
@@ -294,7 +294,7 @@ interface UserService {
         @MustBeClosed
         fun delete(username: String): HttpResponse = delete(username, UserDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             username: String,
@@ -302,25 +302,25 @@ interface UserService {
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse = delete(params.toBuilder().username(username).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             username: String,
             params: UserDeleteParams = UserDeleteParams.none(),
         ): HttpResponse = delete(username, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(
             params: UserDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(params: UserDeleteParams): HttpResponse = delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         @MustBeClosed
         fun delete(username: String, requestOptions: RequestOptions): HttpResponse =
             delete(username, UserDeleteParams.none(), requestOptions)
@@ -333,20 +333,20 @@ interface UserService {
         fun createWithList(): HttpResponseFor<User> =
             createWithList(UserCreateWithListParams.none())
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         @MustBeClosed
         fun createWithList(
             params: UserCreateWithListParams = UserCreateWithListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<User>
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         @MustBeClosed
         fun createWithList(
             params: UserCreateWithListParams = UserCreateWithListParams.none()
         ): HttpResponseFor<User> = createWithList(params, RequestOptions.none())
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         @MustBeClosed
         fun createWithList(requestOptions: RequestOptions): HttpResponseFor<User> =
             createWithList(UserCreateWithListParams.none(), requestOptions)
@@ -357,19 +357,19 @@ interface UserService {
          */
         @MustBeClosed fun login(): HttpResponseFor<String> = login(UserLoginParams.none())
 
-        /** @see [login] */
+        /** @see login */
         @MustBeClosed
         fun login(
             params: UserLoginParams = UserLoginParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<String>
 
-        /** @see [login] */
+        /** @see login */
         @MustBeClosed
         fun login(params: UserLoginParams = UserLoginParams.none()): HttpResponseFor<String> =
             login(params, RequestOptions.none())
 
-        /** @see [login] */
+        /** @see login */
         @MustBeClosed
         fun login(requestOptions: RequestOptions): HttpResponseFor<String> =
             login(UserLoginParams.none(), requestOptions)
@@ -380,19 +380,19 @@ interface UserService {
          */
         @MustBeClosed fun logout(): HttpResponse = logout(UserLogoutParams.none())
 
-        /** @see [logout] */
+        /** @see logout */
         @MustBeClosed
         fun logout(
             params: UserLogoutParams = UserLogoutParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponse
 
-        /** @see [logout] */
+        /** @see logout */
         @MustBeClosed
         fun logout(params: UserLogoutParams = UserLogoutParams.none()): HttpResponse =
             logout(params, RequestOptions.none())
 
-        /** @see [logout] */
+        /** @see logout */
         @MustBeClosed
         fun logout(requestOptions: RequestOptions): HttpResponse =
             logout(UserLogoutParams.none(), requestOptions)

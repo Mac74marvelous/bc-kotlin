@@ -34,17 +34,17 @@ interface UserServiceAsync {
     /** This can only be done by the logged in user. */
     fun create(): CompletableFuture<User> = create(UserCreateParams.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(
         params: UserCreateParams = UserCreateParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<User>
 
-    /** @see [create] */
+    /** @see create */
     fun create(params: UserCreateParams = UserCreateParams.none()): CompletableFuture<User> =
         create(params, RequestOptions.none())
 
-    /** @see [create] */
+    /** @see create */
     fun create(requestOptions: RequestOptions): CompletableFuture<User> =
         create(UserCreateParams.none(), requestOptions)
 
@@ -52,7 +52,7 @@ interface UserServiceAsync {
     fun retrieve(username: String): CompletableFuture<User> =
         retrieve(username, UserRetrieveParams.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         username: String,
         params: UserRetrieveParams = UserRetrieveParams.none(),
@@ -60,23 +60,23 @@ interface UserServiceAsync {
     ): CompletableFuture<User> =
         retrieve(params.toBuilder().username(username).build(), requestOptions)
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         username: String,
         params: UserRetrieveParams = UserRetrieveParams.none(),
     ): CompletableFuture<User> = retrieve(username, params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(
         params: UserRetrieveParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<User>
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(params: UserRetrieveParams): CompletableFuture<User> =
         retrieve(params, RequestOptions.none())
 
-    /** @see [retrieve] */
+    /** @see retrieve */
     fun retrieve(username: String, requestOptions: RequestOptions): CompletableFuture<User> =
         retrieve(username, UserRetrieveParams.none(), requestOptions)
 
@@ -84,7 +84,7 @@ interface UserServiceAsync {
     fun update(existingUsername: String): CompletableFuture<Void?> =
         update(existingUsername, UserUpdateParams.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         existingUsername: String,
         params: UserUpdateParams = UserUpdateParams.none(),
@@ -92,23 +92,23 @@ interface UserServiceAsync {
     ): CompletableFuture<Void?> =
         update(params.toBuilder().existingUsername(existingUsername).build(), requestOptions)
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         existingUsername: String,
         params: UserUpdateParams = UserUpdateParams.none(),
     ): CompletableFuture<Void?> = update(existingUsername, params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(
         params: UserUpdateParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [update] */
+    /** @see update */
     fun update(params: UserUpdateParams): CompletableFuture<Void?> =
         update(params, RequestOptions.none())
 
-    /** @see [update] */
+    /** @see update */
     fun update(existingUsername: String, requestOptions: RequestOptions): CompletableFuture<Void?> =
         update(existingUsername, UserUpdateParams.none(), requestOptions)
 
@@ -116,7 +116,7 @@ interface UserServiceAsync {
     fun delete(username: String): CompletableFuture<Void?> =
         delete(username, UserDeleteParams.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         username: String,
         params: UserDeleteParams = UserDeleteParams.none(),
@@ -124,75 +124,75 @@ interface UserServiceAsync {
     ): CompletableFuture<Void?> =
         delete(params.toBuilder().username(username).build(), requestOptions)
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         username: String,
         params: UserDeleteParams = UserDeleteParams.none(),
     ): CompletableFuture<Void?> = delete(username, params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(
         params: UserDeleteParams,
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(params: UserDeleteParams): CompletableFuture<Void?> =
         delete(params, RequestOptions.none())
 
-    /** @see [delete] */
+    /** @see delete */
     fun delete(username: String, requestOptions: RequestOptions): CompletableFuture<Void?> =
         delete(username, UserDeleteParams.none(), requestOptions)
 
     /** Creates list of users with given input array */
     fun createWithList(): CompletableFuture<User> = createWithList(UserCreateWithListParams.none())
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(
         params: UserCreateWithListParams = UserCreateWithListParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<User>
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(
         params: UserCreateWithListParams = UserCreateWithListParams.none()
     ): CompletableFuture<User> = createWithList(params, RequestOptions.none())
 
-    /** @see [createWithList] */
+    /** @see createWithList */
     fun createWithList(requestOptions: RequestOptions): CompletableFuture<User> =
         createWithList(UserCreateWithListParams.none(), requestOptions)
 
     /** Logs user into the system */
     fun login(): CompletableFuture<String> = login(UserLoginParams.none())
 
-    /** @see [login] */
+    /** @see login */
     fun login(
         params: UserLoginParams = UserLoginParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<String>
 
-    /** @see [login] */
+    /** @see login */
     fun login(params: UserLoginParams = UserLoginParams.none()): CompletableFuture<String> =
         login(params, RequestOptions.none())
 
-    /** @see [login] */
+    /** @see login */
     fun login(requestOptions: RequestOptions): CompletableFuture<String> =
         login(UserLoginParams.none(), requestOptions)
 
     /** Logs out current logged in user session */
     fun logout(): CompletableFuture<Void?> = logout(UserLogoutParams.none())
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(
         params: UserLogoutParams = UserLogoutParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<Void?>
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(params: UserLogoutParams = UserLogoutParams.none()): CompletableFuture<Void?> =
         logout(params, RequestOptions.none())
 
-    /** @see [logout] */
+    /** @see logout */
     fun logout(requestOptions: RequestOptions): CompletableFuture<Void?> =
         logout(UserLogoutParams.none(), requestOptions)
 
@@ -212,18 +212,18 @@ interface UserServiceAsync {
          */
         fun create(): CompletableFuture<HttpResponseFor<User>> = create(UserCreateParams.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: UserCreateParams = UserCreateParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<User>>
 
-        /** @see [create] */
+        /** @see create */
         fun create(
             params: UserCreateParams = UserCreateParams.none()
         ): CompletableFuture<HttpResponseFor<User>> = create(params, RequestOptions.none())
 
-        /** @see [create] */
+        /** @see create */
         fun create(requestOptions: RequestOptions): CompletableFuture<HttpResponseFor<User>> =
             create(UserCreateParams.none(), requestOptions)
 
@@ -234,7 +234,7 @@ interface UserServiceAsync {
         fun retrieve(username: String): CompletableFuture<HttpResponseFor<User>> =
             retrieve(username, UserRetrieveParams.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             username: String,
             params: UserRetrieveParams = UserRetrieveParams.none(),
@@ -242,24 +242,24 @@ interface UserServiceAsync {
         ): CompletableFuture<HttpResponseFor<User>> =
             retrieve(params.toBuilder().username(username).build(), requestOptions)
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             username: String,
             params: UserRetrieveParams = UserRetrieveParams.none(),
         ): CompletableFuture<HttpResponseFor<User>> =
             retrieve(username, params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             params: UserRetrieveParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<User>>
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(params: UserRetrieveParams): CompletableFuture<HttpResponseFor<User>> =
             retrieve(params, RequestOptions.none())
 
-        /** @see [retrieve] */
+        /** @see retrieve */
         fun retrieve(
             username: String,
             requestOptions: RequestOptions,
@@ -273,7 +273,7 @@ interface UserServiceAsync {
         fun update(existingUsername: String): CompletableFuture<HttpResponse> =
             update(existingUsername, UserUpdateParams.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             existingUsername: String,
             params: UserUpdateParams = UserUpdateParams.none(),
@@ -281,23 +281,23 @@ interface UserServiceAsync {
         ): CompletableFuture<HttpResponse> =
             update(params.toBuilder().existingUsername(existingUsername).build(), requestOptions)
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             existingUsername: String,
             params: UserUpdateParams = UserUpdateParams.none(),
         ): CompletableFuture<HttpResponse> = update(existingUsername, params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             params: UserUpdateParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [update] */
+        /** @see update */
         fun update(params: UserUpdateParams): CompletableFuture<HttpResponse> =
             update(params, RequestOptions.none())
 
-        /** @see [update] */
+        /** @see update */
         fun update(
             existingUsername: String,
             requestOptions: RequestOptions,
@@ -311,7 +311,7 @@ interface UserServiceAsync {
         fun delete(username: String): CompletableFuture<HttpResponse> =
             delete(username, UserDeleteParams.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             username: String,
             params: UserDeleteParams = UserDeleteParams.none(),
@@ -319,23 +319,23 @@ interface UserServiceAsync {
         ): CompletableFuture<HttpResponse> =
             delete(params.toBuilder().username(username).build(), requestOptions)
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             username: String,
             params: UserDeleteParams = UserDeleteParams.none(),
         ): CompletableFuture<HttpResponse> = delete(username, params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             params: UserDeleteParams,
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(params: UserDeleteParams): CompletableFuture<HttpResponse> =
             delete(params, RequestOptions.none())
 
-        /** @see [delete] */
+        /** @see delete */
         fun delete(
             username: String,
             requestOptions: RequestOptions,
@@ -349,18 +349,18 @@ interface UserServiceAsync {
         fun createWithList(): CompletableFuture<HttpResponseFor<User>> =
             createWithList(UserCreateWithListParams.none())
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         fun createWithList(
             params: UserCreateWithListParams = UserCreateWithListParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<User>>
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         fun createWithList(
             params: UserCreateWithListParams = UserCreateWithListParams.none()
         ): CompletableFuture<HttpResponseFor<User>> = createWithList(params, RequestOptions.none())
 
-        /** @see [createWithList] */
+        /** @see createWithList */
         fun createWithList(
             requestOptions: RequestOptions
         ): CompletableFuture<HttpResponseFor<User>> =
@@ -372,18 +372,18 @@ interface UserServiceAsync {
          */
         fun login(): CompletableFuture<HttpResponseFor<String>> = login(UserLoginParams.none())
 
-        /** @see [login] */
+        /** @see login */
         fun login(
             params: UserLoginParams = UserLoginParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<String>>
 
-        /** @see [login] */
+        /** @see login */
         fun login(
             params: UserLoginParams = UserLoginParams.none()
         ): CompletableFuture<HttpResponseFor<String>> = login(params, RequestOptions.none())
 
-        /** @see [login] */
+        /** @see login */
         fun login(requestOptions: RequestOptions): CompletableFuture<HttpResponseFor<String>> =
             login(UserLoginParams.none(), requestOptions)
 
@@ -393,18 +393,18 @@ interface UserServiceAsync {
          */
         fun logout(): CompletableFuture<HttpResponse> = logout(UserLogoutParams.none())
 
-        /** @see [logout] */
+        /** @see logout */
         fun logout(
             params: UserLogoutParams = UserLogoutParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponse>
 
-        /** @see [logout] */
+        /** @see logout */
         fun logout(
             params: UserLogoutParams = UserLogoutParams.none()
         ): CompletableFuture<HttpResponse> = logout(params, RequestOptions.none())
 
-        /** @see [logout] */
+        /** @see logout */
         fun logout(requestOptions: RequestOptions): CompletableFuture<HttpResponse> =
             logout(UserLogoutParams.none(), requestOptions)
     }
