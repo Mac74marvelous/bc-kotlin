@@ -3,6 +3,7 @@ package com.aducaky.api.core.http
 import com.aducaky.api.core.RequestOptions
 import com.aducaky.api.core.checkRequired
 import com.aducaky.api.errors.AducakyIoException
+import com.aducaky.api.errors.AducakyRetryableException
 import java.io.IOException
 import java.time.Clock
 import java.time.Duration
@@ -176,9 +177,10 @@ private constructor(
     }
 
     private fun shouldRetry(throwable: Throwable): Boolean =
-        // Only retry IOException and AducakyIoException, other exceptions are not intended to be
-        // retried.
-        throwable is IOException || throwable is AducakyIoException
+        // Only retry known retryable exceptions, other exceptions are not intended to be retried.
+        throwable is IOException ||
+            throwable is AducakyIoException ||
+            throwable is AducakyRetryableException
 
     private fun getRetryBackoffDuration(retries: Int, response: HttpResponse?): Duration {
         // About the Retry-After header:

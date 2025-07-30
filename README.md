@@ -219,6 +219,8 @@ The SDK throws custom unchecked exception types:
 
 - [`AducakyIoException`](aducaky-java-core/src/main/kotlin/com/aducaky/api/errors/AducakyIoException.kt): I/O networking errors.
 
+- [`AducakyRetryableException`](aducaky-java-core/src/main/kotlin/com/aducaky/api/errors/AducakyRetryableException.kt): Generic error indicating a failure that could be retried by the client.
+
 - [`AducakyInvalidDataException`](aducaky-java-core/src/main/kotlin/com/aducaky/api/errors/AducakyInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
 - [`AducakyException`](aducaky-java-core/src/main/kotlin/com/aducaky/api/errors/AducakyException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
