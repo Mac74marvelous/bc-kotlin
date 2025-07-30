@@ -3,18 +3,15 @@
 package com.aducaky.api.models.pet
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class PetRetrieveParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         PetRetrieveParams.builder().petId(0L).build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = PetRetrieveParams.builder().petId(0L).build()

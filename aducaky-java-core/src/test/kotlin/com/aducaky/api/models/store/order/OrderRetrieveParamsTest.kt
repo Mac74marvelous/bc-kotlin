@@ -3,18 +3,15 @@
 package com.aducaky.api.models.store.order
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class OrderRetrieveParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         OrderRetrieveParams.builder().orderId(0L).build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = OrderRetrieveParams.builder().orderId(0L).build()

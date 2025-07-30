@@ -5,12 +5,10 @@ package com.aducaky.api.models.pet
 import com.aducaky.api.core.http.QueryParams
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class PetUploadImageParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         PetUploadImageParams.builder()
@@ -20,7 +18,6 @@ internal class PetUploadImageParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = PetUploadImageParams.builder().petId(0L).build()
@@ -30,7 +27,6 @@ internal class PetUploadImageParamsTest {
         assertThat(params._pathParam(1)).isEqualTo("")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParams() {
         val params =
@@ -48,7 +44,6 @@ internal class PetUploadImageParamsTest {
             )
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParamsWithoutOptionalFields() {
         val params = PetUploadImageParams.builder().petId(0L).build()
@@ -58,7 +53,6 @@ internal class PetUploadImageParamsTest {
         assertThat(queryParams).isEqualTo(QueryParams.builder().build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -73,7 +67,6 @@ internal class PetUploadImageParamsTest {
         assertThat(body).isEqualTo("some content")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = PetUploadImageParams.builder().petId(0L).build()

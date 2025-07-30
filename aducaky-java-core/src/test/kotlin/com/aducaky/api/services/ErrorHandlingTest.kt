@@ -25,7 +25,6 @@ import com.github.tomakehurst.wiremock.junit5.WireMockTest
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.entry
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.api.parallel.ResourceLock
@@ -58,7 +57,6 @@ internal class ErrorHandlingTest {
                 .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory400() {
         val storeService = client.store()
@@ -76,7 +74,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory400WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -94,7 +91,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory401() {
         val storeService = client.store()
@@ -112,7 +108,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory401WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -130,7 +125,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory403() {
         val storeService = client.store()
@@ -148,7 +142,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory403WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -166,7 +159,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory404() {
         val storeService = client.store()
@@ -184,7 +176,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory404WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -202,7 +193,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory422() {
         val storeService = client.store()
@@ -220,7 +210,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory422WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -238,7 +227,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory429() {
         val storeService = client.store()
@@ -256,7 +244,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory429WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -274,7 +261,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory500() {
         val storeService = client.store()
@@ -292,7 +278,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory500WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -310,7 +295,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory999() {
         val storeService = client.store()
@@ -328,7 +312,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventory999WithRawResponse() {
         val storeService = client.store().withRawResponse()
@@ -346,7 +329,6 @@ internal class ErrorHandlingTest {
         assertThat(e.body()).isEqualTo(ERROR_JSON)
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun storeListInventoryInvalidJsonBody() {
         val storeService = client.store()

@@ -4,18 +4,15 @@ package com.aducaky.api.models.pet
 
 import com.aducaky.api.core.http.QueryParams
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class PetUpdateByIdParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         PetUpdateByIdParams.builder().petId(0L).name("name").status("status").build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = PetUpdateByIdParams.builder().petId(0L).build()
@@ -25,7 +22,6 @@ internal class PetUpdateByIdParamsTest {
         assertThat(params._pathParam(1)).isEqualTo("")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParams() {
         val params = PetUpdateByIdParams.builder().petId(0L).name("name").status("status").build()
@@ -36,7 +32,6 @@ internal class PetUpdateByIdParamsTest {
             .isEqualTo(QueryParams.builder().put("name", "name").put("status", "status").build())
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParamsWithoutOptionalFields() {
         val params = PetUpdateByIdParams.builder().petId(0L).build()
