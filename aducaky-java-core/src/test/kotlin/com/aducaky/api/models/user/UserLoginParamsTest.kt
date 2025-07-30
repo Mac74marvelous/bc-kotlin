@@ -4,18 +4,15 @@ package com.aducaky.api.models.user
 
 import com.aducaky.api.core.http.QueryParams
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class UserLoginParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         UserLoginParams.builder().password("password").username("username").build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParams() {
         val params = UserLoginParams.builder().password("password").username("username").build()
@@ -31,7 +28,6 @@ internal class UserLoginParamsTest {
             )
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun queryParamsWithoutOptionalFields() {
         val params = UserLoginParams.builder().build()

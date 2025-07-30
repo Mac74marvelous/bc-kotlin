@@ -4,12 +4,10 @@ package com.aducaky.api.models.user
 
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class UserUpdateParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         UserUpdateParams.builder()
@@ -29,7 +27,6 @@ internal class UserUpdateParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun pathParams() {
         val params = UserUpdateParams.builder().existingUsername("username").build()
@@ -39,7 +36,6 @@ internal class UserUpdateParamsTest {
         assertThat(params._pathParam(1)).isEqualTo("")
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -76,7 +72,6 @@ internal class UserUpdateParamsTest {
             )
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = UserUpdateParams.builder().existingUsername("username").build()

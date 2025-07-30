@@ -4,12 +4,10 @@ package com.aducaky.api.models.user
 
 import kotlin.jvm.optionals.getOrNull
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class UserCreateWithListParamsTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun create() {
         UserCreateWithListParams.builder()
@@ -28,7 +26,6 @@ internal class UserCreateWithListParamsTest {
             .build()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun body() {
         val params =
@@ -64,7 +61,6 @@ internal class UserCreateWithListParamsTest {
             )
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
     @Test
     fun bodyWithoutOptionalFields() {
         val params = UserCreateWithListParams.builder().build()
