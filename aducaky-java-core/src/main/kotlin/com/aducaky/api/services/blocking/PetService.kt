@@ -160,21 +160,24 @@ interface PetService {
         updateById(petId, PetUpdateByIdParams.none(), requestOptions)
 
     /** uploads an image */
-    fun uploadImage(petId: Long): PetUploadImageResponse =
-        uploadImage(petId, PetUploadImageParams.none())
+    fun uploadImage(petId: Long, image: String): PetUploadImageResponse =
+        uploadImage(petId, image, PetUploadImageParams.none())
 
     /** @see uploadImage */
     fun uploadImage(
         petId: Long,
+        image: String,
         params: PetUploadImageParams = PetUploadImageParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
-    ): PetUploadImageResponse = uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
+    ): PetUploadImageResponse =
+        uploadImage(params.toBuilder().petId(petId).image(image).build(), requestOptions)
 
     /** @see uploadImage */
     fun uploadImage(
         petId: Long,
+        image: String,
         params: PetUploadImageParams = PetUploadImageParams.none(),
-    ): PetUploadImageResponse = uploadImage(petId, params, RequestOptions.none())
+    ): PetUploadImageResponse = uploadImage(petId, image, params, RequestOptions.none())
 
     /** @see uploadImage */
     fun uploadImage(
@@ -187,8 +190,12 @@ interface PetService {
         uploadImage(params, RequestOptions.none())
 
     /** @see uploadImage */
-    fun uploadImage(petId: Long, requestOptions: RequestOptions): PetUploadImageResponse =
-        uploadImage(petId, PetUploadImageParams.none(), requestOptions)
+    fun uploadImage(
+        petId: Long,
+        image: String,
+        requestOptions: RequestOptions,
+    ): PetUploadImageResponse =
+        uploadImage(petId, image, PetUploadImageParams.none(), requestOptions)
 
     /** A view of [PetService] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -398,25 +405,27 @@ interface PetService {
          * same as [PetService.uploadImage].
          */
         @MustBeClosed
-        fun uploadImage(petId: Long): HttpResponseFor<PetUploadImageResponse> =
-            uploadImage(petId, PetUploadImageParams.none())
+        fun uploadImage(petId: Long, image: String): HttpResponseFor<PetUploadImageResponse> =
+            uploadImage(petId, image, PetUploadImageParams.none())
 
         /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             petId: Long,
+            image: String,
             params: PetUploadImageParams = PetUploadImageParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): HttpResponseFor<PetUploadImageResponse> =
-            uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
+            uploadImage(params.toBuilder().petId(petId).image(image).build(), requestOptions)
 
         /** @see uploadImage */
         @MustBeClosed
         fun uploadImage(
             petId: Long,
+            image: String,
             params: PetUploadImageParams = PetUploadImageParams.none(),
         ): HttpResponseFor<PetUploadImageResponse> =
-            uploadImage(petId, params, RequestOptions.none())
+            uploadImage(petId, image, params, RequestOptions.none())
 
         /** @see uploadImage */
         @MustBeClosed
@@ -434,8 +443,9 @@ interface PetService {
         @MustBeClosed
         fun uploadImage(
             petId: Long,
+            image: String,
             requestOptions: RequestOptions,
         ): HttpResponseFor<PetUploadImageResponse> =
-            uploadImage(petId, PetUploadImageParams.none(), requestOptions)
+            uploadImage(petId, image, PetUploadImageParams.none(), requestOptions)
     }
 }

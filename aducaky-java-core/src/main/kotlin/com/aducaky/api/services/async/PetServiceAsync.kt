@@ -184,22 +184,25 @@ interface PetServiceAsync {
         updateById(petId, PetUpdateByIdParams.none(), requestOptions)
 
     /** uploads an image */
-    fun uploadImage(petId: Long): CompletableFuture<PetUploadImageResponse> =
-        uploadImage(petId, PetUploadImageParams.none())
+    fun uploadImage(petId: Long, image: String): CompletableFuture<PetUploadImageResponse> =
+        uploadImage(petId, image, PetUploadImageParams.none())
 
     /** @see uploadImage */
     fun uploadImage(
         petId: Long,
+        image: String,
         params: PetUploadImageParams = PetUploadImageParams.none(),
         requestOptions: RequestOptions = RequestOptions.none(),
     ): CompletableFuture<PetUploadImageResponse> =
-        uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
+        uploadImage(params.toBuilder().petId(petId).image(image).build(), requestOptions)
 
     /** @see uploadImage */
     fun uploadImage(
         petId: Long,
+        image: String,
         params: PetUploadImageParams = PetUploadImageParams.none(),
-    ): CompletableFuture<PetUploadImageResponse> = uploadImage(petId, params, RequestOptions.none())
+    ): CompletableFuture<PetUploadImageResponse> =
+        uploadImage(petId, image, params, RequestOptions.none())
 
     /** @see uploadImage */
     fun uploadImage(
@@ -214,9 +217,10 @@ interface PetServiceAsync {
     /** @see uploadImage */
     fun uploadImage(
         petId: Long,
+        image: String,
         requestOptions: RequestOptions,
     ): CompletableFuture<PetUploadImageResponse> =
-        uploadImage(petId, PetUploadImageParams.none(), requestOptions)
+        uploadImage(petId, image, PetUploadImageParams.none(), requestOptions)
 
     /** A view of [PetServiceAsync] that provides access to raw HTTP responses for each method. */
     interface WithRawResponse {
@@ -418,23 +422,28 @@ interface PetServiceAsync {
          * Returns a raw HTTP response for `post /pet/{petId}/uploadImage`, but is otherwise the
          * same as [PetServiceAsync.uploadImage].
          */
-        fun uploadImage(petId: Long): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
-            uploadImage(petId, PetUploadImageParams.none())
+        fun uploadImage(
+            petId: Long,
+            image: String,
+        ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
+            uploadImage(petId, image, PetUploadImageParams.none())
 
         /** @see uploadImage */
         fun uploadImage(
             petId: Long,
+            image: String,
             params: PetUploadImageParams = PetUploadImageParams.none(),
             requestOptions: RequestOptions = RequestOptions.none(),
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
-            uploadImage(params.toBuilder().petId(petId).build(), requestOptions)
+            uploadImage(params.toBuilder().petId(petId).image(image).build(), requestOptions)
 
         /** @see uploadImage */
         fun uploadImage(
             petId: Long,
+            image: String,
             params: PetUploadImageParams = PetUploadImageParams.none(),
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
-            uploadImage(petId, params, RequestOptions.none())
+            uploadImage(petId, image, params, RequestOptions.none())
 
         /** @see uploadImage */
         fun uploadImage(
@@ -451,8 +460,9 @@ interface PetServiceAsync {
         /** @see uploadImage */
         fun uploadImage(
             petId: Long,
+            image: String,
             requestOptions: RequestOptions,
         ): CompletableFuture<HttpResponseFor<PetUploadImageResponse>> =
-            uploadImage(petId, PetUploadImageParams.none(), requestOptions)
+            uploadImage(petId, image, PetUploadImageParams.none(), requestOptions)
     }
 }
