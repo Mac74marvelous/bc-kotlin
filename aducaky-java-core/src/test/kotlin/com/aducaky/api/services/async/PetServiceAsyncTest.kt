@@ -19,7 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(TestServerExtension::class)
 internal class PetServiceAsyncTest {
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun create() {
         val client =
@@ -49,7 +49,7 @@ internal class PetServiceAsyncTest {
         pet.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun retrieve() {
         val client =
@@ -65,7 +65,7 @@ internal class PetServiceAsyncTest {
         pet.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun update() {
         val client =
@@ -95,7 +95,7 @@ internal class PetServiceAsyncTest {
         pet.validate()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun delete() {
         val client =
@@ -110,7 +110,7 @@ internal class PetServiceAsyncTest {
         val response = future.get()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun findByStatus() {
         val client =
@@ -131,7 +131,7 @@ internal class PetServiceAsyncTest {
         pets.forEach { it.validate() }
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun findByTags() {
         val client =
@@ -148,7 +148,7 @@ internal class PetServiceAsyncTest {
         pets.forEach { it.validate() }
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun updateById() {
         val client =
@@ -166,7 +166,7 @@ internal class PetServiceAsyncTest {
         val response = future.get()
     }
 
-    @Disabled("skipped: tests are disabled for the time being")
+    @Disabled("Prism tests are disabled")
     @Test
     fun uploadImage() {
         val client =
