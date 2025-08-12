@@ -328,7 +328,7 @@ class PetServiceAsyncImpl internal constructor(private val clientOptions: Client
             // We check here instead of in the params builder because this can be specified
             // positionally or in the params class.
             checkRequired("petId", params.petId().getOrNull())
-            checkRequired("image", !params._image().isMissing())
+            checkRequired("image", params._body().getOrNull())
             val request =
                 HttpRequest.builder()
                     .method(HttpMethod.POST)
