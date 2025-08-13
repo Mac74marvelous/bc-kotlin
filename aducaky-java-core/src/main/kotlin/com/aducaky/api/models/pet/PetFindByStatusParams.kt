@@ -301,7 +301,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Status && value == other.value /* spotless:on */
+            return other is Status && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -314,10 +314,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is PetFindByStatusParams && status == other.status && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is PetFindByStatusParams &&
+            status == other.status &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(status, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(status, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "PetFindByStatusParams{status=$status, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

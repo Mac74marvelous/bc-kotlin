@@ -224,10 +224,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is OrderDeleteParams && orderId == other.orderId && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is OrderDeleteParams &&
+            orderId == other.orderId &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(orderId, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(orderId, additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "OrderDeleteParams{orderId=$orderId, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

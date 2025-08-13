@@ -214,10 +214,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is UserDeleteParams && username == other.username && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams && additionalBodyProperties == other.additionalBodyProperties /* spotless:on */
+        return other is UserDeleteParams &&
+            username == other.username &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams &&
+            additionalBodyProperties == other.additionalBodyProperties
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(username, additionalHeaders, additionalQueryParams, additionalBodyProperties) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(username, additionalHeaders, additionalQueryParams, additionalBodyProperties)
 
     override fun toString() =
         "UserDeleteParams{username=$username, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams, additionalBodyProperties=$additionalBodyProperties}"

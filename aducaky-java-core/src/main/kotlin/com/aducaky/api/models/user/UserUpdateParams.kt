@@ -201,10 +201,15 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is UserUpdateParams && existingUsername == other.existingUsername && user == other.user && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is UserUpdateParams &&
+            existingUsername == other.existingUsername &&
+            user == other.user &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(existingUsername, user, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(existingUsername, user, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "UserUpdateParams{existingUsername=$existingUsername, user=$user, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
