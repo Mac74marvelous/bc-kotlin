@@ -463,7 +463,7 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Status && value == other.value /* spotless:on */
+            return other is Status && value == other.value
         }
 
         override fun hashCode() = value.hashCode()
@@ -626,12 +626,13 @@ private constructor(
                 return true
             }
 
-            return /* spotless:off */ other is Tag && id == other.id && name == other.name && additionalProperties == other.additionalProperties /* spotless:on */
+            return other is Tag &&
+                id == other.id &&
+                name == other.name &&
+                additionalProperties == other.additionalProperties
         }
 
-        /* spotless:off */
         private val hashCode: Int by lazy { Objects.hash(id, name, additionalProperties) }
-        /* spotless:on */
 
         override fun hashCode(): Int = hashCode
 
@@ -644,12 +645,19 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is Pet && name == other.name && photoUrls == other.photoUrls && id == other.id && category == other.category && status == other.status && tags == other.tags && additionalProperties == other.additionalProperties /* spotless:on */
+        return other is Pet &&
+            name == other.name &&
+            photoUrls == other.photoUrls &&
+            id == other.id &&
+            category == other.category &&
+            status == other.status &&
+            tags == other.tags &&
+            additionalProperties == other.additionalProperties
     }
 
-    /* spotless:off */
-    private val hashCode: Int by lazy { Objects.hash(name, photoUrls, id, category, status, tags, additionalProperties) }
-    /* spotless:on */
+    private val hashCode: Int by lazy {
+        Objects.hash(name, photoUrls, id, category, status, tags, additionalProperties)
+    }
 
     override fun hashCode(): Int = hashCode
 

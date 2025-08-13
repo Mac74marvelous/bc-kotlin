@@ -187,10 +187,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is PetUpdateParams && pet == other.pet && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is PetUpdateParams &&
+            pet == other.pet &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(pet, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(pet, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "PetUpdateParams{pet=$pet, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

@@ -224,10 +224,16 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is PetUploadImageParams && petId == other.petId && additionalMetadata == other.additionalMetadata && image == other.image && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is PetUploadImageParams &&
+            petId == other.petId &&
+            additionalMetadata == other.additionalMetadata &&
+            image == other.image &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(petId, additionalMetadata, image, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int =
+        Objects.hash(petId, additionalMetadata, image, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "PetUploadImageParams{petId=$petId, additionalMetadata=$additionalMetadata, image=$image, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

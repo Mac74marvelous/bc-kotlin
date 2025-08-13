@@ -178,10 +178,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is OrderCreateParams && order == other.order && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is OrderCreateParams &&
+            order == other.order &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(order, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(order, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "OrderCreateParams{order=$order, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"

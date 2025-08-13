@@ -184,10 +184,13 @@ private constructor(
             return true
         }
 
-        return /* spotless:off */ other is UserCreateWithListParams && items == other.items && additionalHeaders == other.additionalHeaders && additionalQueryParams == other.additionalQueryParams /* spotless:on */
+        return other is UserCreateWithListParams &&
+            items == other.items &&
+            additionalHeaders == other.additionalHeaders &&
+            additionalQueryParams == other.additionalQueryParams
     }
 
-    override fun hashCode(): Int = /* spotless:off */ Objects.hash(items, additionalHeaders, additionalQueryParams) /* spotless:on */
+    override fun hashCode(): Int = Objects.hash(items, additionalHeaders, additionalQueryParams)
 
     override fun toString() =
         "UserCreateWithListParams{items=$items, additionalHeaders=$additionalHeaders, additionalQueryParams=$additionalQueryParams}"
