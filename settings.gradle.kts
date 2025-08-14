@@ -1,7 +1,14 @@
 rootProject.name = "aducaky-java-root"
 
-include("aducaky-java")
-include("aducaky-java-client-okhttp")
-include("aducaky-java-core")
-include("aducaky-java-proguard-test")
-include("aducaky-java-example")
+val projectNames = rootDir.listFiles()
+    ?.asSequence()
+    .orEmpty()
+    .filter { file ->
+        file.isDirectory &&
+        file.name.startsWith("aducaky-java") &&
+        file.listFiles()?.asSequence().orEmpty().any { it.name == "build.gradle.kts" }
+    }
+    .map { it.name }
+    .toList()
+println("projects: $projectNames")
+projectNames.forEach { include(it) }
