@@ -48,7 +48,7 @@ class AducakyClientImpl(private val clientOptions: ClientOptions) : AducakyClien
 
     override fun user(): UserService = user
 
-    override fun close() = clientOptions.httpClient.close()
+    override fun close() = clientOptions.close()
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
         AducakyClient.WithRawResponse {
