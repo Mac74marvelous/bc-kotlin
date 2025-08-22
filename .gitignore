@@ -1,6 +1,7 @@
-.idea
+.prism.log
 .gradle
-out
-build
-kcrypto/build
-examples/build
+.idea
+.kotlin
+build/
+codegen.log
+kls_database.db
